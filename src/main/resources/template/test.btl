@@ -1,0 +1,12 @@
+<%
+for(importClass in list){ %>
+impport  ${importClass}
+<%}%>
+public class ${entityName} {
+    <%for(entry in map){
+         var key = entry.key;
+         var value = entry.value;
+    %>
+    private  ${value}  ${key};
+    <%}%>
+}

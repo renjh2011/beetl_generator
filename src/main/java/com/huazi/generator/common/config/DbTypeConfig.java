@@ -1,16 +1,12 @@
 package com.huazi.generator.common.config;
 
-import com.huazi.generator.common.util.PropertiesUtil;
-import com.huazi.generator.generator.dbDataType.DbDataType;
-import com.huazi.generator.generator.dbDataType.impl.mysql.MysqlDataType;
+import com.huazi.generator.generator.database.dbDataType.DbDataType;
 import com.huazi.generator.generator.properties.DbDataTypeProperties;
-import org.apache.commons.configuration.PropertiesConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Map;
 
 @Configuration
 public class DbTypeConfig {
@@ -22,9 +18,8 @@ public class DbTypeConfig {
     public DbDataType mysqlDataType() throws Exception {
 
         String filename=null;
-        DbDataType dbDataType=null;
         switch (dbType){
-            case "mysql" : filename = "mysqlDataType.properties";dbDataType = MysqlDataType.getInstance();break;
+            case "mysql" : filename = "mysqlDataType.properties";break;
             case "oracle" : filename = "oracleDataType.properties";break;
         }
         if(filename==null){
@@ -32,6 +27,8 @@ public class DbTypeConfig {
         }
         DbDataTypeProperties dbDataTypeProperties=new DbDataTypeProperties();
         Map<String ,String > map=dbDataTypeProperties.loadAll("mysqlDataType.properties");
+
+        DbDataType dbDataType = DbDataType.getInstance();
         dbDataType.setMap(map);
         return dbDataType;
     }

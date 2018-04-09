@@ -14,6 +14,5 @@ public class BeetlApplication {
 		SpringApplication.run(BeetlApplication.class, args);
 		GroupTemplate groupTemplate= (GroupTemplate) SpringUtil.getBean("groupTemplate");
 		System.out.println("args = [" + groupTemplate + "]");
-//		new Test().test();
 	}
 }
