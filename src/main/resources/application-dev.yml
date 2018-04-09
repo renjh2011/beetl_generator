@@ -1,0 +1,35 @@
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://192.168.0.65:3306/weizhang?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull
+        username: xpkj
+        password: xp13142017
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        filters: stat,wall,log4j2
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+        maxPoolPreparedStatementPerConnectionSize: 20
+
+mybatis:
+    typeAliasesPackage: com.huazi.generator.entity
+    mapperLocations: classpath:mapper/*.xml
+    mapper:
+      mappers: com.huazi.generator.mappers
+
+#mapper:
+#    mappers:
+#        - com.huazi.generator.mappers
+#    not-empty: false
+#    identity: MYSQL

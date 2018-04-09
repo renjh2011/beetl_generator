@@ -1,4 +1,4 @@
-package com.huazi.generator.config;
+package com.huazi.generator.common.config;
 
 import org.apache.commons.lang3.StringUtils;
 import org.beetl.core.Configuration;

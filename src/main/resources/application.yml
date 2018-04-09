@@ -1,0 +1,11 @@
+beetl:
+  template:
+    root:
+      path: template
+
+spring:
+    application:
+        name: beetl-generator
+    profiles:
+        active: dev
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huazi.generator.mappers.VehicleMapper">
+  <resultMap id="BaseResultMap" type="com.huazi.generator.entity.Vehicle">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="license" jdbcType="VARCHAR" property="license" />
+    <result column="frame_no" jdbcType="VARCHAR" property="frameNo" />
+    <result column="engine_no" jdbcType="VARCHAR" property="engineNo" />
+    <result column="error_msg" jdbcType="VARCHAR" property="errorMsg" />
+    <result column="lstype" jdbcType="VARCHAR" property="lstype" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="BaseColumn">
+    id, license, frame_no, engine_no, error_msg, lstype , state
+  </sql>
+
+  <select id="get" resultMap="BaseResultMap" parameterType="com.huazi.generator.entity.Vehicle">
+      select <include refid="BaseColumn"/> from vehicle
+  </select>
+</mapper>
