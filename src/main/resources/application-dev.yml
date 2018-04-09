@@ -28,6 +28,9 @@ mybatis:
     mapper:
       mappers: com.huazi.generator.mappers
 
+generator:
+    database:
+        type: mysql
 #mapper:
 #    mappers:
 #        - com.huazi.generator.mappers
