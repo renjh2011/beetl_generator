@@ -4,9 +4,9 @@ spring:
 #        url: jdbc:mysql://192.168.0.65:3306/weizhang?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull
 #        username: xpkj
 #        password: xp13142017
-        url: jdbc:mysql://116.196.81.215:3306/huazi?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull
-        username: huazi
-        password: huazi
+        url: jdbc:mysql://116.196.81.56:3306/huazi?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull
+        username:
+        password:
 
         # 使用druid数据源
         type: com.alibaba.druid.pool.DruidDataSource
