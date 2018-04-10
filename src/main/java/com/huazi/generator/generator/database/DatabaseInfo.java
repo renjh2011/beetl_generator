@@ -47,11 +47,14 @@ public class DatabaseInfo {
             String columnName=rs.getString(1);
             String columnDataType=rs.getString(2);
             String columnComment=rs.getString(3);
+
             columnName= GeneratorUtil.underline2Camel(columnName,true);
+            String columnMethod=GeneratorUtil.capFirst(columnName);
             TableColumns tableColumns=new TableColumns();
             tableColumns.setColumnComment(columnComment);
             tableColumns.setColumnDataType(columnDataType);
             tableColumns.setColumnName(columnName);
+            tableColumns.setColumnMethod(columnMethod);
             tableColumnsList.add(tableColumns);
         }
     }

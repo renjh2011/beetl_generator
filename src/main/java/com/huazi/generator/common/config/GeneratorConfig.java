@@ -1,18 +1,22 @@
 package com.huazi.generator.common.config;
 
 import com.huazi.generator.generator.database.dbDataType.DbDataType;
+import com.huazi.generator.generator.database.packagemodel.PackageModel;
 import com.huazi.generator.generator.properties.DbDataTypeProperties;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import java.util.Map;
 
 @Configuration
-public class DbTypeConfig {
+public class GeneratorConfig {
 
     @Value("${generator.database.type}")
     private String dbType;
+    @Value("${generator.package.entity}")
+    private String entity;
 
     @Bean
     public DbDataType mysqlDataType() throws Exception {
@@ -31,5 +35,13 @@ public class DbTypeConfig {
         DbDataType dbDataType = DbDataType.getInstance();
         dbDataType.setMap(map);
         return dbDataType;
+    }
+
+    @Bean
+    @Scope(value = "singleton")
+    public PackageModel packageModel(){
+        PackageModel packageModel=new PackageModel();
+        packageModel.setEntity(entity);
+        return packageModel;
     }
 }

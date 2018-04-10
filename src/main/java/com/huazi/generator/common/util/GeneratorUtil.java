@@ -45,10 +45,25 @@ public class GeneratorUtil {
         return sb.toString();
     }
 
+    /**
+     * 首字母大写
+     * @param line
+     * @return
+     */
+    public static String capFirst(String line){
+        if(line==null||"".equals(line)){
+            return "";
+        }
+        String firstLetter=line.substring(0,1).toUpperCase();
+        String leftLetter=line.substring(1);
+        return firstLetter+leftLetter;
+    }
+
     public static void main(String[] args) {
-        String line="i_have_an_ipang3_pig";
+        String line="im_have_an_ipang3_pig";
         String camel=underline2Camel(line,true);
         System.out.println(camel);
         System.out.println(camel2Underline(camel));
+        System.out.println(capFirst(camel));
     }
 }

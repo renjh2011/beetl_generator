@@ -4,6 +4,7 @@ public class TableColumns {
     private String columnName;
     private String columnDataType;
     private String columnComment;
+    private String columnMethod;
 
     public String getColumnName() {
         return columnName;
@@ -29,12 +30,21 @@ public class TableColumns {
         this.columnComment = columnComment;
     }
 
+    public String getColumnMethod() {
+        return columnMethod;
+    }
+
+    public void setColumnMethod(String columnMethod) {
+        this.columnMethod = columnMethod;
+    }
+
     @Override
     public String toString() {
         return "TableColumns{" +
                 "columnName='" + columnName + '\'' +
                 ", columnDataType='" + columnDataType + '\'' +
                 ", columnComment='" + columnComment + '\'' +
+                ", columnMethod='" + columnMethod + '\'' +
                 '}';
     }
 }

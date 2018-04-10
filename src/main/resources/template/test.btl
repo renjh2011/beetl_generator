@@ -1,5 +1,6 @@
+${package};
 <%
-for(importClass in list){ %>
+for(importClass in listImportClz){ %>
 impport  ${importClass}
 <%}%>
 public class ${entityName} {
@@ -9,4 +10,15 @@ public class ${entityName} {
     %>
     private  ${value}  ${key};
     <%}%>
+
+    <%for(setMethod in listSetMethod){
+    %>
+    ${setMethod}
+    <%}%>
+
+    <%for(getMethod in listGetMethod){
+        %>
+        ${getMethod}
+        <%}%>
+
 }
