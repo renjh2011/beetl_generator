@@ -1,12 +1,12 @@
 spring:
     datasource:
         name: test
-        url: jdbc:mysql://192.168.0.65:3306/weizhang?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull
-        username: xpkj
-        password: xp13142017
-#        url: jdbc:mysql://116.196.81.215:3306/huazi?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull
-#        username:
-#        password:
+#        url: jdbc:mysql://192.168.0.65:3306/weizhang?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull
+#        username: xpkj
+#        password: xp13142017
+        url: jdbc:mysql://116.196.81.215:3306/huazi?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull
+        username: huazi
+        password: huazi
 
         # 使用druid数据源
         type: com.alibaba.druid.pool.DruidDataSource
@@ -37,6 +37,10 @@ generator:
         type: mysql
     package:
         entity: com.huazi.generator.entity
+        mapper: com.huazi.generator.mappers
+        service: com.huazi.generator.service
+        controller: com.huazi.generator.controller
+        xml: mapper
 #mapper:
 #    mappers:
 #        - com.huazi.generator.mappers

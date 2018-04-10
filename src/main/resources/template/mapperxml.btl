@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${mapperClz}">
+  <resultMap id="BaseResultMap" type="${entityClz}">
+    <% for(resultMap in resultMapList) {%>
+    <result column="${resultMap.columnName}" jdbcType="${resultMap.jdbcType}" property="${resultMap.attrName}" />
+    <%}%>
+  </resultMap>
+  <sql id="BaseColumn">
+    ${baseColumn}
+  </sql>
+
+  <select id="get" resultMap="BaseResultMap" parameterType="${entityClz}">
+      select <include refid="BaseColumn"/> from ${tableName}
+  </select>
+</mapper>

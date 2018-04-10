@@ -1,9 +1,11 @@
 package com.huazi.generator.common.config;
 
+import com.huazi.generator.common.exception.ExceptionMsg;
 import org.apache.commons.lang3.StringUtils;
 import org.beetl.core.Configuration;
 import org.beetl.core.GroupTemplate;
 import org.beetl.core.resource.FileResourceLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 

@@ -1,10 +1,27 @@
 package com.huazi.generator.generator.model;
 
 public class TableColumns {
+    /**
+     * 字段名
+     */
     private String columnName;
+
+    /**
+     * 字段类型
+     */
     private String columnDataType;
+
+    /**
+     * 字段注释
+     */
     private String columnComment;
-    private String columnMethod;
+
+    /**
+     * 根据字段名生成方法名
+     */
+    private String attrMethod;
+
+    private String attrName;
 
     public String getColumnName() {
         return columnName;
@@ -30,12 +47,20 @@ public class TableColumns {
         this.columnComment = columnComment;
     }
 
-    public String getColumnMethod() {
-        return columnMethod;
+    public String getAttrName() {
+        return attrName;
     }
 
-    public void setColumnMethod(String columnMethod) {
-        this.columnMethod = columnMethod;
+    public void setAttrName(String attrName) {
+        this.attrName = attrName;
+    }
+
+    public String getAttrMethod() {
+        return attrMethod;
+    }
+
+    public void setAttrMethod(String attrMethod) {
+        this.attrMethod = attrMethod;
     }
 
     @Override
@@ -44,7 +69,6 @@ public class TableColumns {
                 "columnName='" + columnName + '\'' +
                 ", columnDataType='" + columnDataType + '\'' +
                 ", columnComment='" + columnComment + '\'' +
-                ", columnMethod='" + columnMethod + '\'' +
                 '}';
     }
 }

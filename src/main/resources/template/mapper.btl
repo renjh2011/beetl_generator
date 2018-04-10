@@ -1,0 +1,9 @@
+${package};
+import java.util.*;
+import ${importEntity};
+public interface ${mapperName} {
+    List<${entityName}> get(${entityName} ${lEntityName});
+    void insert(${entityName} ${lEntityName});
+    void delete(${entityName} ${lEntityName});
+    void update(${entityName} ${lEntityName});
+}

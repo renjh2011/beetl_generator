@@ -1,7 +1,6 @@
 package com.huazi.generator;
 
-import com.huazi.generator.generator.EntityGenerator;
-import com.huazi.generator.generator.Generator;
+import com.huazi.generator.generator.*;
 import com.huazi.generator.generator.database.dbDataType.DbDataType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,11 @@ public class BeetlApplicationTests {
 
 	@Test
 	public void contextLoads() throws SQLException, ClassNotFoundException {
-		Generator generator=new EntityGenerator();
+		new EntityGenerator("sys_log");
+		new MapperGenerator("sys_log");
+		new MapperXmlGenerator("sys_log");
+		new ServiceGenerator("sys_log");
+		new ServiceImplGenerator("sys_log");
 	}
 
 }

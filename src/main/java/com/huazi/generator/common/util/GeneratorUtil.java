@@ -1,5 +1,7 @@
 package com.huazi.generator.common.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -57,6 +59,44 @@ public class GeneratorUtil {
         String firstLetter=line.substring(0,1).toUpperCase();
         String leftLetter=line.substring(1);
         return firstLetter+leftLetter;
+    }
+
+    /**
+     * 获取类名前缀
+     * @param tableName
+     * @return
+     */
+    public static String getClzPrefix(String tableName){
+        if(StringUtils.isEmpty(tableName)){
+            return "";
+        }
+        return capFirst(underline2Camel(tableName,true));
+    }
+
+    public static String getClzName(String tableName,String suffix){
+        if(StringUtils.isEmpty(tableName)){
+            return "";
+        }
+        return getClzPrefix(tableName)+ suffix;
+    }
+
+
+    public static String getClzPath(String packagePath,String clzName){
+        String root=ResourceUtil.projectPath();
+        String path=root.replace("\\","/")+"/src/main/java/" + packagePath + "/" + clzName;
+        /*String path=root.replace("\\","/")+"/src/main/java/" +
+                packageModel.getEntity().replace(".","/") +
+                "/" + clzName+"Entity.java";*/
+        return path;
+    }
+
+    public static String getResourcePath(String packagePath,String clzName){
+        String root=ResourceUtil.projectPath();
+        String path=root.replace("\\","/")+"/src/main/resources/" + packagePath + "/" + clzName;
+        /*String path=root.replace("\\","/")+"/src/main/java/" +
+                packageModel.getEntity().replace(".","/") +
+                "/" + clzName+"Entity.java";*/
+        return path;
     }
 
     public static void main(String[] args) {

@@ -1,0 +1,19 @@
+package ${package};
+
+<%for(importClz in importList){%>
+import ${importClz};
+<%}%>
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ${serviceImplName} implements ${serviceName}{
+
+    @Autowired
+    private ${mapperName} ${lMapperName};
+    @Override
+    public List<${entityName}> get(${entityName} ${lEntityName}) {
+        return ${lMapperName}.get(${lEntityName});
+    }
+}

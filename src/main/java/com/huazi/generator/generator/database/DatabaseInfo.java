@@ -19,7 +19,7 @@ import java.util.Map;
  * Created by huazi on 2018/4/9.
  */
 public class DatabaseInfo {
-    private SqlSession sqlSession= (SqlSession) SpringUtil.getBean("sqlSession");
+    private static SqlSession sqlSession= (SqlSession) SpringUtil.getBean("sqlSession");
     private static List<TableColumns> tableColumnsList=null;
 
     /**
@@ -27,13 +27,17 @@ public class DatabaseInfo {
      * @param tableName
      * @throws SQLException
      */
-    public void setColumns(String tableName) throws SQLException {
+    public static void setColumns(String tableName) throws SQLException {
         if(tableColumnsList == null){
             synchronized (Generator.class){
                 if(tableColumnsList == null) {
                     tableColumnsList = new ArrayList<>();
+                }else {
+                    return;
                 }
             }
+        }else {
+            return;
         }
 //        String statement = " select column_name,data_type,column_comment from information_schema.columns" +
 //                            " where table_schema = '"+1+"' and table_name = '"+2+"'";
@@ -48,18 +52,19 @@ public class DatabaseInfo {
             String columnDataType=rs.getString(2);
             String columnComment=rs.getString(3);
 
-            columnName= GeneratorUtil.underline2Camel(columnName,true);
-            String columnMethod=GeneratorUtil.capFirst(columnName);
+            String attrName= GeneratorUtil.underline2Camel(columnName,true);
+            String columnMethod=GeneratorUtil.capFirst(attrName);
             TableColumns tableColumns=new TableColumns();
             tableColumns.setColumnComment(columnComment);
             tableColumns.setColumnDataType(columnDataType);
             tableColumns.setColumnName(columnName);
-            tableColumns.setColumnMethod(columnMethod);
+            tableColumns.setAttrName(attrName);
+            tableColumns.setAttrMethod(columnMethod);
             tableColumnsList.add(tableColumns);
         }
     }
 
-    public List<TableColumns> getTableColumnsList() {
+    public static List<TableColumns> getTableColumnsList() {
         return tableColumnsList;
     }
 }

@@ -1,8 +1,11 @@
 package com.huazi.generator.common.config;
 
+import com.huazi.generator.common.exception.ConfigException;
+import com.huazi.generator.common.exception.ExceptionMsg;
+import com.huazi.generator.common.util.PropertiesUtil;
 import com.huazi.generator.generator.database.dbDataType.DbDataType;
 import com.huazi.generator.generator.database.packagemodel.PackageModel;
-import com.huazi.generator.generator.properties.DbDataTypeProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +21,20 @@ public class GeneratorConfig {
     @Value("${generator.package.entity}")
     private String entity;
 
+    @Value("${generator.package.mapper}")
+    private String mapper;
+
+    @Value("${generator.package.service}")
+    private String service;
+
+    @Value("${generator.package.controller}")
+    private String controller;
+
+    @Value("${generator.package.xml}")
+    private String xml;
+
     @Bean
-    public DbDataType mysqlDataType() throws Exception {
+    public DbDataType mysqlDataType() throws ConfigException {
 
         String filename=null;
         switch (dbType){
@@ -27,10 +42,9 @@ public class GeneratorConfig {
             case "oracle" : filename = "oracleDataType.properties";break;
         }
         if(filename==null){
-            throw new Exception("数据库类型文件不存在");
+            throw new ConfigException(1000);
         }
-        DbDataTypeProperties dbDataTypeProperties=new DbDataTypeProperties();
-        Map<String ,String > map=dbDataTypeProperties.loadAll("mysqlDataType.properties");
+        Map<String ,String > map= PropertiesUtil.loadAll("mysqlDataType.properties");
 
         DbDataType dbDataType = DbDataType.getInstance();
         dbDataType.setMap(map);
@@ -42,6 +56,10 @@ public class GeneratorConfig {
     public PackageModel packageModel(){
         PackageModel packageModel=new PackageModel();
         packageModel.setEntity(entity);
+        packageModel.setMapper(mapper);
+        packageModel.setService(service);
+        packageModel.setController(controller);
+        packageModel.setXml(xml);
         return packageModel;
     }
 }

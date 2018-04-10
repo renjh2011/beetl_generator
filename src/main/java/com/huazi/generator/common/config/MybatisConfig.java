@@ -1,6 +1,7 @@
 package com.huazi.generator.common.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.huazi.generator.common.exception.ExceptionMsg;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -18,6 +19,9 @@ import javax.sql.DataSource;
 @Configuration
 @AutoConfigureAfter(DruidDataSource.class)
 public class MybatisConfig {
+    @Autowired
+    private ExceptionMsg exceptionMsg;
+
     @Value("${mybatis.mapperLocations}")
     private String mapperLocations;
 

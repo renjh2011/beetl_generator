@@ -5,6 +5,7 @@ public class PackageModel {
     private String service;
     private String entity;
     private String mapper;
+    private String xml;
 
     public String getController() {
         return controller;
@@ -36,5 +37,13 @@ public class PackageModel {
 
     public void setMapper(String mapper) {
         this.mapper = mapper;
+    }
+
+    public String getXml() {
+        return xml;
+    }
+
+    public void setXml(String xml) {
+        this.xml = xml;
     }
 }

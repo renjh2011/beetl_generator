@@ -1,0 +1,9 @@
+package ${package};
+
+<%for(importClz in importList){%>
+import ${importClz};
+<%}%>
+
+public interface ${serviceName} {
+    List<${entityName}> get(${entityName} ${lEntityName});
+}

@@ -1,10 +1,10 @@
 ${package};
 <%
 for(importClass in listImportClz){ %>
-impport  ${importClass}
+import  ${importClass};
 <%}%>
 public class ${entityName} {
-    <%for(entry in map){
+    <%for(entry in attrMap){
          var key = entry.key;
          var value = entry.value;
     %>
@@ -17,8 +17,8 @@ public class ${entityName} {
     <%}%>
 
     <%for(getMethod in listGetMethod){
-        %>
-        ${getMethod}
-        <%}%>
+    %>
+    ${getMethod}
+    <%}%>
 
 }
