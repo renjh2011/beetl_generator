@@ -19,26 +19,19 @@ import java.util.Map;
  * Created by huazi on 2018/4/9.
  */
 public class DatabaseInfo {
-    private static SqlSession sqlSession= (SqlSession) SpringUtil.getBean("sqlSession");
-    private static List<TableColumns> tableColumnsList=null;
+    private SqlSession sqlSession= (SqlSession) SpringUtil.getBean("sqlSession");
+
+    private String tableName;
+    public DatabaseInfo(String tableName) {
+        this.tableName = tableName;
+    }
 
     /**
      * @describe 根据数据库表名获取对应的列名，数据类型，注释
-     * @param tableName
      * @throws SQLException
      */
-    public static void setColumns(String tableName) throws SQLException {
-        if(tableColumnsList == null){
-            synchronized (Generator.class){
-                if(tableColumnsList == null) {
-                    tableColumnsList = new ArrayList<>();
-                }else {
-                    return;
-                }
-            }
-        }else {
-            return;
-        }
+    public List<TableColumns> getTableColumnsList() throws SQLException {
+        List<TableColumns> tableColumnsList=new ArrayList<>();
 //        String statement = " select column_name,data_type,column_comment from information_schema.columns" +
 //                            " where table_schema = '"+1+"' and table_name = '"+2+"'";
         String statement = " select column_name,data_type,column_comment from information_schema.columns" +
@@ -62,9 +55,7 @@ public class DatabaseInfo {
             tableColumns.setAttrMethod(columnMethod);
             tableColumnsList.add(tableColumns);
         }
-    }
-
-    public static List<TableColumns> getTableColumnsList() {
         return tableColumnsList;
     }
+
 }

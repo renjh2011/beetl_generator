@@ -30,8 +30,8 @@ public class EntityGenerator implements Generator{
 
 //        DatabaseInfo databaseInfo=new DatabaseInfo();
         //获取数据库表结构 字段名 字段类型 字段注释
-        DatabaseInfo.setColumns(tableName);
-        List<TableColumns> list = DatabaseInfo.getTableColumnsList();
+        DatabaseInfo databaseInfo=new DatabaseInfo(tableName);
+        List<TableColumns> list = databaseInfo.getTableColumnsList();
 
         //设置模板参数
         //import set

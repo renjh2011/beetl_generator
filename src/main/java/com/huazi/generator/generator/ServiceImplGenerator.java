@@ -47,8 +47,8 @@ public class ServiceImplGenerator {
         importList.add("java.util.*");
 
         //获取数据库表结构 字段名 字段类型 字段注释
-        DatabaseInfo.setColumns(tableName);
-        List<TableColumns> list = DatabaseInfo.getTableColumnsList();
+        DatabaseInfo databaseInfo=new DatabaseInfo(tableName);
+        List<TableColumns> list = databaseInfo.getTableColumnsList();
 
         List<XmlResultMap> xmlResultMapList=new ArrayList<>();
         StringBuilder baseColumnSb=new StringBuilder();

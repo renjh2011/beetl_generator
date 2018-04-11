@@ -5,7 +5,7 @@ import java.util.Map;
 public class DbDataType {
     private Map<String ,String> map=null;
 
-    private static DbDataType dbDataType=null;
+    private static volatile DbDataType dbDataType=null;
     private DbDataType(){
     }
 
